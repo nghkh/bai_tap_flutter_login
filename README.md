@@ -1,6 +1,6 @@
-# kingdompost
+# Bài tập về nhà
 
-A new Flutter project.
+Bài tập về nhà về giao điện đăng nhập đăng ký
 
 ## Getting Started
 
