@@ -9,11 +9,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  bool _passwordVisible = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 250, 250, 250),
-      body: MediaQuery.of(context).orientation == Orientation.portrait ? _quayDoc(): _quayNgang(),
+      backgroundColor: const Color.fromARGB(255, 250, 250, 250),
+      body: MediaQuery.of(context).orientation == Orientation.portrait
+          ? _quayDoc()
+          : _quayNgang(),
     );
   }
 
@@ -38,14 +41,29 @@ class _HomePageState extends State<HomePage> {
                     labelText: 'Số điện thoại',
                     hintText: 'Nhập số điện thoại',
                   ),
+                  keyboardType: TextInputType.number,
                   autofocus: false,
                 ),
                 const SizedBox(height: 20),
-                const TextField(
+                TextField(
+                  obscureText: !_passwordVisible,
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(),
+                    border: const OutlineInputBorder(),
                     labelText: 'Mật khẩu',
                     hintText: 'Nhập mật khẩu',
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        setState((){
+                          _passwordVisible = !_passwordVisible;
+                        });
+                      },
+                      icon: Icon(
+                        _passwordVisible
+                            ? Icons.visibility
+                            : Icons.visibility_off,
+                        color: Theme.of(context).primaryColorDark,
+                      ),
+                    ),
                   ),
                   autofocus: false,
                   autocorrect: false,
@@ -71,15 +89,15 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ],
                     ),
-                    SizedBox(width: 80),
+                    const SizedBox(width: 50),
                     Container(
                       decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 1, 150, 135),
+                        color: const Color.fromARGB(255, 1, 150, 135),
                         borderRadius: BorderRadius.circular(4.0),
                       ),
                       child: TextButton(
                         onPressed: () {},
-                        child: Text(
+                        child: const Text(
                           'Đăng nhập',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
@@ -95,7 +113,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ),
-        Expanded(child: Container ()),
+        Expanded(child: Container()),
         RichText(
           text: const TextSpan(
             children: [
@@ -177,12 +195,12 @@ class _HomePageState extends State<HomePage> {
                       ),
                       Container(
                         decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 1, 150, 135),
+                          color: const Color.fromARGB(255, 1, 150, 135),
                           borderRadius: BorderRadius.circular(4.0),
                         ),
                         child: TextButton(
                           onPressed: () {},
-                          child: Text(
+                          child: const Text(
                             'Đăng nhập',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
